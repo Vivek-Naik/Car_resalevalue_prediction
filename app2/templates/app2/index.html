@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div align="center">
+        <br>
+        <h1>Factorial Program</h1>
+        <br>
+        <form method="POST">
+        {% csrf_token %}
+        {{form.as_p}}    
+        <button type="submit">find factorial</button>
+        </form>
+        {% if param1 %}
+        <h2>Factorial of {{param2}} is {{param1}}</h2>
+        {% endif %}
+    </div>
+</body>
+</html>
