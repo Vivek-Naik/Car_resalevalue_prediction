@@ -1,0 +1,29 @@
+<!-- app4/templates/app4/index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Permutations</title>
+</head>
+<body>
+    <div align="center">
+    <h1>Permutations of a Word</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Generate Permutations</button>
+    </form>
+
+    {% if permutations %}
+        <h2>Permutations:</h2>
+        
+            {% for permutation in permutations %}
+                <li>{{ permutation }}</li>
+            {% endfor %}
+        
+    {% endif %}
+    </div>
+</body>
+</html>
