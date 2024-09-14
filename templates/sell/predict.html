@@ -1,0 +1,177 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Predict Car Sell</title>
+    <link rel="shortcut icon" href= "{% static 'assets/images/mbr.jpg' %}" type="image/x-icon">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 400px;
+            overflow-y: auto;
+            max-height: 90vh;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, select, button {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <form method="POST" enctype="multipart/form-data" action="{% url 'sell:result' %}">
+        {% csrf_token %}
+        <h2>Predict Car Sell</h2>
+        <div class="form-group">
+            <label for="brand" value=1>Brand:</label>
+            <select id="brand" name="brand" required>
+                <option value="" selected disabled>Enter the brand name</option>
+                <option value="Maruti">Maruti</option>
+                <option value="Skoda">Skoda</option>
+                <option value="Honda">Honda</option>
+                <option value="Hyundai">Hyundai</option>
+                <option value="Toyota">Toyota</option>
+                <option value="Ford">Ford</option>
+                <option value="Renault">Renault</option>
+                <option value="Mahindra">Mahindra</option>
+                <option value="Tata">Tata</option>
+                <option value="Chevrolet">Chevrolet</option>
+                <option value="Datsun">Datsun</option>
+                <option value="Jeep">Jeep</option>
+                <option value="Mercedes-Benz">Mercedes-Benz</option>
+                <option value="Mitsubishi">Mitsubishi</option>
+                <option value="Audi">Audi</option>
+                <option value="Volkswagen">Volkswagen</option>
+                <option value="BMW">BMW</option>
+                <option value="Nissan">Nissan</option>
+                <option value="Lexus">Lexus</option>
+                <option value="Jaguar">Jaguar</option>
+                <option value="Land Rover">Land Rover</option>
+                <option value="MG">MG</option>
+                <option value="Volvo">Volvo</option>
+                <option value="Daewoo">Daewoo</option>
+                <option value="Kia">Kia</option>
+                <option value="Fiat">Fiat</option>
+                <option value="Force">Force</option>
+                <option value="Ambassador">Ambassador</option>
+                <option value="Ashok Leyland">Ashok Leyland</option>
+                <option value="Isuzu">Isuzu</option>
+                <option value="Opel">Opel</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="year" value=2>Year:</label>
+            <input type="number" id="year" name="year" placeholder="Enter the year" required>
+        </div>
+        <div class="form-group">
+            <label for="Km_driven" value=3>Km Driven:</label>
+            <input type="number" id="Km_driven" name="Km_driven" placeholder="Enter the km driven" required>
+        </div>
+        <div class="form-group">
+            <label for="fuel" value=4>Fuel Type:</label>
+            <select id="fuel" name="fuel" required>
+                <option value="" selected disabled>Enter the fuel type</option>
+                <option value="Diesel">Diesel</option>
+                <option value="Petrol">Petrol</option>
+                <option value="LPG">LPG</option>
+                <option value="CNG">CNG</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="transmission" value=5>Transmission:</label>
+            <select id="transmission" name="transmission" required>
+                <option value="" selected disabled>Enter the transmission type</option>
+                <option value="Manual">Manual</option>
+                <option value="Automatic">Automatic</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="owner_type" value=6>Owner Type:</label>
+            <select id="owner_type" name="owner_type" required>
+                <option value="" selected disabled>Enter the owner type</option>
+                <option value="First Owner">First Owner</option>
+                <option value="Second Owner">Second Owner</option>
+                <option value="Third Owner">Third Owner</option>
+                <option value="Fourth & Above Owner">Fourth & Above Owner</option>
+                <option value="Test Drive Car">Test Drive Car</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="mileage" value=7>Mileage:</label>
+            <input type="number" step="0.01" id="mileage" name="mileage" placeholder="Enter the mileage" required>
+        </div>
+        <div class="form-group">
+            <label for="engine_cc" value=8>Engine CC:</label>
+            <input type="number" id="engine_cc" name="engine_cc" placeholder="Enter the engine CC" required>
+        </div>
+        <div class="form-group">
+            <label for="max_power_bhp" value=9>Max Power (bhp):</label>
+            <input type="number" step="0.01" id="max_power_bhp" name="max_power_bhp" placeholder="Enter the max power (bhp)" required>
+        </div>
+        <div class="form-group">
+            <label for="seats" value=10>Seats:</label>
+            <input type="number" id="seats" name="seats" placeholder="Enter the number of seats" required>
+        </div>
+        <div class="form-group">
+            <label for="image">Car Image:</label>
+            <input type="file" id="image" name="image" accept="image/*"><br><br>
+        </div>
+        <button type="submit" value="submit">Predict</button>
+    </form>
+
+    {% if output %}
+    <div>
+        <h2>The predicted score is {{output}}<h2>
+        
+        <div>
+            
+            <button type="submit" href="{% url 'buy:buy' %}" name="satisfied" >Sell</button>
+            
+        </div>
+    </div>
+        {% endif %}
+ 
+
+
+</body>
+</html>
